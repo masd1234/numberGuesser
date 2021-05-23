@@ -16,13 +16,13 @@ let computerWinner = document.querySelector(".computer");
 //* players scores */
 let humanScore = 0;
 let computerScore = 0;
-let winningScore = 2;
+let winningScore = 5;
 
 /*starts a new round in the game*/
 generateNextRound = () => {
-  makeGuesButton.disable = false;
-  addButtom.disable = false;
-  minusButtom.disable = false;
+  makeGuesButton.disabled = false;
+  addButtom.disabled = false;
+  minusButtom.disabled = false;
   targetNumber.innerHTML = "?";
   makeGuesButton.style.backgroundColor = "hover";
 };
@@ -42,10 +42,10 @@ generateTarget = () => {
     throw "Your number must be between 0 and 9";
   } else {
     targetNumber.innerHTML = random;
-    makeGuesButton.disable = true;
-    addButtom.disable = true;
-    minusButtom.disable = true;
-    makeNextButtom.disable = false;
+    makeGuesButton.disabled = true;
+    addButtom.disabled = true;
+    minusButtom.disabled = true;
+    makeNextButtom.disabled = false;
   }
 
   return random;
@@ -92,6 +92,7 @@ win = () => {
 updateScore = () => {
   let winner = compareGuesses();
   let modelnewGame = win();
+  makeNextButtom.disabled = false;
 
   if (modelnewGame === true) {
     document.querySelector(".modal_endgame").id = "starGame";
@@ -107,12 +108,14 @@ updateScore = () => {
     humanScore++;
     humanScoreDom.innerHTML = humanScore;
     userWinner.innerHTML = "You won!!!!!!!!";
+    computerWinner.innerHTML = "Computer lost!!!";
     document.querySelector(".main__containerYou").id = "won";
     document.querySelector(".main__containerComp").id = "lose";
   } else if (winner === false) {
     computerScore++;
     computerScoreDom.innerHTML = computerScore;
     computerWinner.innerHTML = "Computer Won!!!!!";
+    userWinner.innerHTML = "You lost!!!";
     document.querySelector(".main__containerYou").id = "lose";
     document.querySelector(".main__containerComp").id = "won";
   } else if (typeof winner === "string") {
@@ -125,7 +128,7 @@ updateScore = () => {
 /*this function updates to 0 the round*/
 advanceRound = () => {
   roundNumber.innerHTML++;
-  makeNextButtom.disable = true;
+  makeNextButtom.disabled = true;
   inputNumber.value = 0;
   numberCompt.innerHTML = 0;
   makeGuesButton.innerHTML = "Make a Guess";
@@ -153,12 +156,14 @@ resetGame = () => {
   advanceRound();
   inputNumber.value = 0;
   roundNumber.innerHTML = 1;
-  makeNextButtom.disable = false;
+  makeNextButtom.disabled = false;
   humanScoreDom.innerHTML = 0;
   computerScoreDom.innerHTML = 0;
   numberCompt.innerHTML = 0;
   targetNumber.innerHTML = 0;
-  makeGuesButton.disable = false;
+  makeGuesButton.disabled = false;
+  addButtom.disabled = false;
+  minusButtom.disabled = false;
   humanScore = 0;
   computerScore = 0;
   document.querySelector(".modal_endgame").id = "startedGame";
