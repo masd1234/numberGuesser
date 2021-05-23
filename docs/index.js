@@ -5,6 +5,7 @@ let inputNumber = document.querySelector(".inputNumber");
 let addButtom = document.querySelector(".main__ContainerButtom_plus");
 let minusButtom = document.querySelector(".main__ContainerButtom_min");
 let roundNumber = document.querySelector(".round");
+let newGame = document.querySelector(".newGameButtom");
 let next = document.querySelector(".nextGameButtom");
 let numberCompt = document.querySelector(".numberComputer");
 let humanScoreDom = document.querySelector(".humanScore");
@@ -15,12 +16,13 @@ let computerWinner = document.querySelector(".computer");
 //* players scores */
 let humanScore = 0;
 let computerScore = 0;
+let winningScore = 2;
 
 /*starts a new round in the game*/
 generateNextRound = () => {
-  makeGuesButton.disabled = false;
-  addButtom.disabled = false;
-  minusButtom.disabled = false;
+  makeGuesButton.disable = false;
+  addButtom.disable = false;
+  minusButtom.disable = false;
   targetNumber.innerHTML = "?";
   makeGuesButton.style.backgroundColor = "hover";
 };
@@ -40,10 +42,10 @@ generateTarget = () => {
     throw "Your number must be between 0 and 9";
   } else {
     targetNumber.innerHTML = random;
-    makeGuesButton.disabled = true;
-    addButtom.disabled = true;
-    minusButtom.disabled = true;
-    makeNextButtom.disabled = false;
+    makeGuesButton.disable = true;
+    addButtom.disable = true;
+    minusButtom.disable = true;
+    makeNextButtom.disable = false;
   }
 
   return random;
@@ -59,11 +61,6 @@ compareGuesses = () => {
   let integerComputer = Math.abs(target - computer);
   let resultWinner;
   numberCompt.innerHTML = computer;
-  makeGuesButton.disabled = true;
-
-  console.log(`${target} target`);
-  console.log(`${human} human`);
-  console.log(`${computer} computer`);
 
   if (human === target) {
     resultWinner = true;
@@ -80,8 +77,31 @@ compareGuesses = () => {
   return resultWinner;
 };
 
+win = () => {
+  if (humanScore >= winningScore) {
+    console.log(humanScore);
+    return true;
+  } else if (computerScore >= winningScore) {
+    console.log(humanScore);
+    return false;
+  } else {
+    return null;
+  }
+};
+
 updateScore = () => {
   let winner = compareGuesses();
+  let modelnewGame = win();
+
+  if (modelnewGame === true) {
+    document.querySelector(".modal_endgame").id = "starGame";
+    document.querySelector(".winnerEndGame").innerHTML =
+      "You Won!!! Congrast!!!";
+  } else if (modelnewGame === false) {
+    document.querySelector(".modal_endgame").id = "starGame";
+    document.querySelector(".winnerEndGame").innerHTML =
+      "The computer defeat you!!!";
+  }
 
   if (winner === true) {
     humanScore++;
@@ -97,13 +117,15 @@ updateScore = () => {
     document.querySelector(".main__containerComp").id = "won";
   } else if (typeof winner === "string") {
     userWinner.innerHTML = "It is a tie";
+    document.querySelector(".main__containerComp").id = "tie";
+    document.querySelector(".main__containerYou").id = "tie";
   }
 };
 
 /*this function updates to 0 the round*/
 advanceRound = () => {
   roundNumber.innerHTML++;
-  makeNextButtom.disabled = true;
+  makeNextButtom.disable = true;
   inputNumber.value = 0;
   numberCompt.innerHTML = 0;
   makeGuesButton.innerHTML = "Make a Guess";
@@ -127,15 +149,19 @@ minusOneInputNumber = () => {
   }
 };
 
-nextGame = () => {
+resetGame = () => {
+  advanceRound();
   inputNumber.value = 0;
   roundNumber.innerHTML = 1;
-  makeNextButtom.disabled = false;
+  makeNextButtom.disable = false;
   humanScoreDom.innerHTML = 0;
   computerScoreDom.innerHTML = 0;
   numberCompt.innerHTML = 0;
   targetNumber.innerHTML = 0;
-  makeGuesButton.disabled = false;
+  makeGuesButton.disable = false;
+  humanScore = 0;
+  computerScore = 0;
+  document.querySelector(".modal_endgame").id = "startedGame";
   document.querySelector(".main__containerYou").id = "";
   document.querySelector(".main__containerComp").id = "";
 };
@@ -145,4 +171,5 @@ makeNextButtom.addEventListener("click", advanceRound);
 makeNextButtom.addEventListener("click", generateNextRound);
 addButtom.addEventListener("click", addOneInputNumber);
 minusButtom.addEventListener("click", minusOneInputNumber);
-next.addEventListener("click", nextGame);
+next.addEventListener("click", resetGame);
+newGame.addEventListener("click", resetGame);
