@@ -1,0 +1,214 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+button {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: rgb(240, 188, 188);
+  background: linear-gradient(
+    38deg,
+    rgba(240, 188, 188, 1) 0%,
+    rgba(242, 142, 142, 1) 30%,
+    rgba(241, 127, 127, 1) 73%,
+    rgba(255, 0, 0, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+/*header section */
+
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.container__title {
+  margin-bottom: 10px;
+  border-radius: 1rem;
+  background-color: whitesmoke;
+  padding: 1.5rem;
+}
+
+.container__Round {
+  background-color: whitesmoke;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  min-width: 250px;
+  height: 20%;
+  font-size: 1.2rem;
+}
+
+/*main section*/
+
+.main {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 1.5rem;
+}
+
+.main__containerComp,
+.main__containerYou {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: whitesmoke;
+  height: 25rem;
+  flex-basis: 260px;
+  border-radius: 2rem;
+  padding: 10px;
+}
+.computer {
+  text-align: center;
+}
+
+#won {
+  background-color: rgba(12, 250, 4, 0.623);
+  color: whitesmoke;
+}
+
+#lose {
+  background-color: rgba(255, 0, 0, 0.521);
+  color: whitesmoke;
+}
+
+/*buttom section of you player section*/
+
+.main__ContainerButtom {
+  width: 12rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.main__ContainerButtom_plus,
+.main__ContainerButtom_min {
+  width: 25%;
+  height: 2.5rem;
+  color: black;
+  border-radius: 0.2rem;
+  border: none;
+  transition: 0.5s;
+}
+
+.main__ContainerButtom_plus {
+  background-color: rgba(55, 236, 31, 0.76);
+}
+
+.main__ContainerButtom_min {
+  background-color: rgba(236, 72, 31, 0.76);
+}
+.inputNumber {
+  height: 5rem;
+  width: 7rem;
+  font-size: 3rem;
+  text-align: center;
+  border: none;
+  border-radius: 0.8rem;
+}
+.main__ContainerButtom_plus:hover,
+.main__ContainerButtom_min:hover,
+.makeGuess:hover {
+  background-color: rgba(242, 142, 142, 1);
+}
+
+.makeGuess {
+  color: whitesmoke;
+  height: 3rem;
+  width: 10rem;
+  border-radius: 0.5rem;
+  border: none;
+  transition: 0.5s;
+  background-color: rgb(53, 106, 223);
+}
+
+.nextRound {
+  height: 8rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.nextButtom,
+.nextGameButtom {
+  height: 4rem;
+  width: 10rem;
+  border-radius: 0.7rem;
+  border: none;
+  transition: 1s;
+  background-color: rgb(53, 106, 223);
+  color: whitesmoke;
+}
+
+.nextButtom:hover,
+.nextGameButtom:hover {
+  background-color: rgb(30, 150, 230);
+  color: whitesmoke;
+  transform: translateY(-5px);
+}
+
+/*fotter istructions*/
+.fotterInstruction {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+}
+
+.instructions {
+  max-width: 300px;
+  height: auto;
+  border-radius: 0.8rem;
+}
+
+footer div {
+  background-color: whitesmoke;
+  border-radius: 4rem;
+  padding: 1.5rem;
+  margin: 1rem;
+}
+
+@media only screen and (max-width: 546px) {
+  body {
+    height: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container__Round {
+    height: 75%;
+  }
+
+  .main {
+    height: 60rem;
+  }
+
+  .nextRound {
+    width: 90%;
+  }
+  .instructions {
+    width: 80%;
+  }
+}
