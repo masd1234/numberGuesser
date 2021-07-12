@@ -6,35 +6,35 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <script src="./index.js" async></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="./dist/index.js" defer></script>
   </head>
   <body>
-    <section class="header">
+    <header class="header">
       <div class="container__title">
         <h1>Number Guesser!</h1>
       </div>
       <div class="container__Round">
-        <h1>Round <h1 class="round">1</h1></h1>
-        <h3>
-          Target Number:
-          <h1 class="target">?</h1>
-        </h3>
+        <div>
+          <h2>Round <h2 class="round">1</h2></h2>  
+          <h2>Target Number:</h2>
+        </div>
+        <h1 class="target">?</h1>
       </div>
-    </section>
+    </header>
 
     <section class="main">
       <div class="main__containerComp">
         <h3 class="computer">Computer</h3>
-        <p>Score: <p class="computerScore">0</p>
+        <p>Score: <p class="computerScore"></p>
         <h3>Computer's number</h3>
         <h1 class="numberComputer">?</h1>
       </div>
 
       <div class="main__containerYou">
         <h3 class="user">You</h3>
-        <p>Score: <p class="humanScore" value="1">0</p></p>
-        <input type="text" class="inputNumber"  value="0" />
+        <p>Score: <p class="humanScore" value="0"></p></p>
+        <input type="text" class="inputNumber" value="0" />
         <div class="main__ContainerButtom">
           <button class="main__ContainerButtom_plus">+</button>
           <button class="main__ContainerButtom_min">-</button>
