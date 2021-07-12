@@ -19,11 +19,11 @@ let roundCounter = 1
 //DOM Buttons
 let targetNumber = document.querySelector(".target") as HTMLElement;
 let makeGuesButton = document.querySelector(".makeGuess") as HTMLButtonElement;
-let makeNextButtom = document.querySelector(".nextButtom") as HTMLButtonElement;
-let addButtom = document.querySelector(".main__ContainerButtom_plus") as HTMLButtonElement;
-let minusButtom = document.querySelector(".main__ContainerButtom_min") as HTMLButtonElement;
-let newGame = document.querySelector(".newGameButtom") as HTMLButtonElement;
-let next = document.querySelector(".nextGameButtom") as HTMLButtonElement;
+let makeNextButton = document.querySelector(".nextButton") as HTMLButtonElement;
+let addButton = document.querySelector("#buttonPlus") as HTMLButtonElement;
+let minusButton = document.querySelector("#buttonMinus") as HTMLButtonElement;
+let newGame = document.querySelector(".newGameButton") as HTMLButtonElement;
+let next = document.querySelector(".nextGameButton") as HTMLButtonElement;
 
 // DOM Input number
 let inputNumber = document.querySelector(".inputNumber") as HTMLInputElement;
@@ -39,8 +39,8 @@ let computerWinner = document.querySelector(".computer") as HTMLElement;
 
 const modalEndgame = document.querySelector(".modal_endgame") as HTMLElement
 const winnerEndGame = document.querySelector(".winnerEndGame") as HTMLElement
-const mainContainerYou = document.querySelector(".main__containerYou") as HTMLElement
-const mainContainerComputer = document.querySelector(".main__containerComp") as HTMLElement
+const mainContainerYou = document.querySelector("#main__containerYou") as HTMLElement
+const mainContainerComputer = document.querySelector("#main__containerComp") as HTMLElement
 
 
 //reads the value from the input field
@@ -58,8 +58,8 @@ let getValueCall = getVal()
 // start a new round in the game
 const generateNextRound = () => {
     (<HTMLInputElement>makeGuesButton).disabled = false;
-    (<HTMLInputElement>addButtom).disabled = false;
-        (<HTMLInputElement>minusButtom).disabled = false;
+    (<HTMLInputElement>addButton).disabled = false;
+        (<HTMLInputElement>minusButton).disabled = false;
   targetNumber.innerHTML = "?";
   makeGuesButton.style.backgroundColor = "hover";
 };
@@ -83,9 +83,9 @@ const generateTarget = () => {
     getValueCall.counterInput = parseInt(inputNumber.value)
     targetNumber.innerHTML = random;
     makeGuesButton.disabled = true;
-    addButtom.disabled = true;
-    minusButtom.disabled = true;
-    makeNextButtom.disabled = false;
+    addButton.disabled = true;
+    minusButton.disabled = true;
+    makeNextButton.disabled = false;
   }
 
   return random;
@@ -122,36 +122,31 @@ const compareGuesses = () => {
 
 const win = () => {
   if (humanScore >= winningScore) {
-    return true;
+    modalEndgame.id = "starGame";
+    winnerEndGame.innerHTML =
+      "You Won!!! Congrast!!!";
+     
   } else if (computerScore >= winningScore) {
-    return false;
-  } else {
-    return null;
-  }
+    modalEndgame.id = "starGame";
+    winnerEndGame.innerHTML =
+      "The computer defeat you!!!";
+     
+  } 
 };
 
 const makeGuess = () => {
   let winner = compareGuesses();
-  let modelnewGame = win();
-  makeNextButtom.disabled = false;
-  if (modelnewGame === true) {
-    modalEndgame.id = "starGame";
-    winnerEndGame.innerHTML =
-      "You Won!!! Congrast!!!";
-  } else if (modelnewGame === false) {
-    modalEndgame.id = "starGame";
-    winnerEndGame.innerHTML =
-      "The computer defeat you!!!";
-  }
+  makeNextButton.disabled = false;
 
-  if (winner === true) {
+
+  if (winner) {
     humanScore++;
     humanScoreDom.innerHTML = humanScore.toString();
     userWinner.innerHTML = "You won!!!!!!!!";
     computerWinner.innerHTML = "Computer lost!!!";
     mainContainerYou.id = "won";
     mainContainerComputer.id = "lose";
-  } else if (winner === false) {
+  } else if (!winner) {
     computerScore++;
     computerScoreDom.innerHTML = computerScore.toString();
     computerWinner.innerHTML = "Computer Won!!!!!";
@@ -169,7 +164,7 @@ const makeGuess = () => {
 const advanceRound = () => {
   roundCounter++
   roundNumber.innerHTML = roundCounter.toString();
-  makeNextButtom.disabled = true;
+  makeNextButton.disabled = true;
   inputNumber.value = 0+"";
   numberCompt.innerHTML = 0+"";
   makeGuesButton.innerHTML = "Make a Guess";
@@ -198,14 +193,16 @@ const resetGame = () => {
   
   inputNumber.innerHTML = "0";
   roundNumber.innerHTML = 1+"";
-  makeNextButtom.disabled = false;
+  makeNextButton.disabled = false;
   humanScoreDom.innerHTML = 0+"";
+  userWinner.innerHTML = "User"
+  computerWinner.innerHTML = "Computer"
   computerScoreDom.innerHTML = 0+"";
   numberCompt.innerHTML = 0+"";
   targetNumber.innerHTML = 0+"";
   makeGuesButton.disabled = false;
-  addButtom.disabled = false;
-  minusButtom.disabled = false;
+  addButton.disabled = false;
+  minusButton.disabled = false;
   humanScore = 0;
   computerScore = 0;
   modalEndgame.id = "startedGame";
@@ -216,10 +213,10 @@ const resetGame = () => {
 
 
 makeGuesButton.addEventListener("click", makeGuess);
-makeNextButtom.addEventListener("click", advanceRound);
-makeNextButtom.addEventListener("click", generateNextRound);
-addButtom.addEventListener("click", addOneInputNumber);
-minusButtom.addEventListener("click", minusOneInputNumber);
+makeNextButton.addEventListener("click", advanceRound);
+makeNextButton.addEventListener("click", generateNextRound);
+addButton.addEventListener("click", addOneInputNumber);
+minusButton.addEventListener("click", minusOneInputNumber);
 next.addEventListener("click", resetGame);
 newGame.addEventListener("click", resetGame);
 

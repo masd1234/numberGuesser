@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <script src="./dist/index.js" defer></script>
   </head>
   <body>
@@ -15,66 +18,73 @@
         <h1>Number Guesser!</h1>
       </div>
       <div class="container__Round">
-        <div>
-          <h2>Round <h2 class="round">1</h2></h2>  
-          <h2>Target Number:</h2>
+        <div class="container__round-tag">
+          <h2>Round</h2>
+          <h2 class="round">1</h2>
         </div>
-        <h1 class="target">?</h1>
+
+        <div class="container_target-number">
+          <h1>Target Number:</h1>
+          <h1 class="target">?</h1>
+        </div>
       </div>
     </header>
 
     <section class="main">
-      <div class="main__containerComp">
-        <h3 class="computer">Computer</h3>
-        <p>Score: <p class="computerScore"></p>
-        <h3>Computer's number</h3>
+      <div class="containerGame" id="main__containerComp">
+        <h1 class="computer">Computer</h1>
+        <h2>
+          Score:
+          <p class="computerScore"></p>
+        </h2>
+        <h1>Computer's number</h1>
         <h1 class="numberComputer">?</h1>
       </div>
 
-      <div class="main__containerYou">
-        <h3 class="user">You</h3>
-        <p>Score: <p class="humanScore" value="0"></p></p>
+      <div class="containerGame" id="main__containerYou">
+        <h1 class="user">You</h1>
+        <h2>
+          Score:
+          <h2 class="humanScore" value="0"></h2>
+        </h2>
         <input type="text" class="inputNumber" value="0" />
-        <div class="main__ContainerButtom">
-          <button class="main__ContainerButtom_plus">+</button>
-          <button class="main__ContainerButtom_min">-</button>
+        <div class="main__ContainerButton">
+          <button class="buttonPlusMinus" id="buttonPlus">+</button>
+          <button class="buttonPlusMinus" id="buttonMinus">-</button>
         </div>
         <div class="makeGuessCont">
-          <button class="makeGuess">Make a Guess</button>
+          <button class="makeGuess blue-button">Make a Guess</button>
         </div>
       </div>
     </section>
     <section class="nextRound">
-      <button class="nextButtom">Next Round</button>
-      <button class="nextGameButtom">Reset Game</button>
+      <button class="nextButton blue-button">Next Round</button>
+      <button class="nextGameButton blue-button">Reset Game</button>
     </section>
     <div class="modal_endgame">
       <h1>The game has finished.</h1>
       <h1 class="winnerEndGame">The</h1>
-      <button class="newGameButtom">New Game</button>
-
+      <button class="newGameButton blue-button">New Game</button>
     </div>
     <footer class="fotterInstruction">
       <div class="instructions">
         <h1>Step1</h1>
-        <h3>Type a number between 0 and 9</h3>
+        <p>Type a number between 0 and 9</p>
       </div>
       <div class="instructions">
         <h1>Step2</h1>
-        <h3>
-          Click "Make a Guess" to submit your guess and see 
-          who won the round, the player who is closer to the target number wins the round.
-        </h3>
+        <p>
+          Click "Make a Guess" to submit your guess and see who won the round,
+          the player who is closer to the target number wins the round.
+        </p>
       </div>
       <div class="instructions">
         <h1>Step3</h1>
-        <h3>
-          The player that get 5 points first win the game.
-        </h3>
+        <p>The player that get 5 points first win the game.</p>
       </div>
       <div class="instructions">
         <h1>Step4</h1>
-        <h3>Click "Next Round" to play again.</h3>
+        <p>Click "Next Round" to play again.</p>
       </div>
     </footer>
   </body>

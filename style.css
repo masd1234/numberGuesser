@@ -7,14 +7,11 @@
 html {
   font-size: 10px;
   font-family: "Roboto", sans-serif;
-}
-
-button {
-  font-family: "Roboto", sans-serif;
+  height: auto;
 }
 
 body {
-  height: 100vh;
+  height: auto;
   background: rgb(240, 188, 188);
   background: linear-gradient(
     38deg,
@@ -26,92 +23,158 @@ body {
   );
 }
 
-/*header section */
-
 .header {
   display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  text-align: center;
-  font-size: 1.5rem;
-  margin-top: 1rem;
+  flex-direction: column;
+  height: 20rem;
 }
 
 .container__title {
-  margin-bottom: 10px;
-  border-radius: 1rem;
+  border: whitesmoke 1px solid;
+  padding: 1rem;
+  border-radius: 0.5rem;
   background-color: whitesmoke;
-  padding: 1.5rem;
+  color: rgb(27, 27, 27);
 }
 
 .container__Round {
-  background-color: whitesmoke;
-  border-radius: 1rem;
-  min-width: 250px;
-  height: 20%;
-  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 25rem;
 }
 
-.target {
-  font-size: 4rem;
-  background: rgba(209, 22, 22, 0.767);
-  margin-top: 1rem;
-  color: whitesmoke;
+.container__round-tag {
+  padding: 0.5rem;
   width: 100%;
+  text-align: center;
+  background-color: whitesmoke;
+  color: rgb(27, 27, 27);
+  border-radius: 1rem 1rem 0 0;
+}
+
+.container_target-number {
+  text-align: center;
+  width: 100%;
+  background-color: whitesmoke;
+  padding: 1rem;
+  background-color: rgba(214, 28, 28, 0.925);
+  color: whitesmoke;
   border-radius: 0 0 1rem 1rem;
 }
 
-/*main section*/
-
-.modal_endgame {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  flex-direction: column;
-  background-color: rgba(245, 245, 245, 0.918);
-  width: 70%;
-  height: 70%;
-  text-align: center;
-  position: absolute;
-  top: 15%;
-  left: 15%;
-  z-index: 10;
-  border-radius: 0.8rem;
-}
-
-#starGame {
-  display: flex;
-}
-#startedGame {
-  display: none;
-}
-
 .main {
-  margin-top: 2rem;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  flex-wrap: wrap;
-  font-size: 1.5rem;
+  height: 30rem;
 }
 
-.main__containerComp,
-.main__containerYou {
+.containerGame {
+  border: 1px solid whitesmoke;
+  min-width: 24rem;
+  min-height: 25rem;
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  justify-content: space-around;
+  border-radius: 1rem;
   background-color: whitesmoke;
-  height: 25rem;
-  flex-basis: 260px;
-  border-radius: 2rem;
-  padding: 10px;
+  font-size: 1.2rem;
 }
 
-.computer {
+.computerScore {
   text-align: center;
+}
+
+.inputNumber {
+  text-align: center;
+  border: none;
+  font-size: 3rem;
+  width: 7rem;
+  height: 5rem;
+  border-radius: 1rem;
+}
+
+.main__ContainerButton {
+  width: 100%;
+  text-align: center;
+}
+
+.buttonPlusMinus {
+  width: 3rem;
+  height: 2rem;
+  color: whitesmoke;
+  border: none;
+  border-radius: 0.2rem;
+  font-size: 2rem;
+}
+
+#buttonPlus {
+  background-color: rgb(93, 204, 19);
+  transition: 1s;
+}
+
+#buttonPlus:hover {
+  background-color: whitesmoke;
+  color: rgb(93, 204, 19);
+  transform: translateY(-2px);
+}
+
+#buttonMinus {
+  background-color: red;
+  transition: 1s;
+}
+
+#buttonMinus:hover {
+  background-color: whitesmoke;
+  color: red;
+  transform: translateY(-2px);
+}
+
+.nextRound {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.blue-button {
+  background-color: rgb(44, 116, 211);
+  color: whitesmoke;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  transition: 1s;
+}
+
+.blue-button:hover {
+  background-color: whitesmoke;
+  color: rgb(44, 116, 211);
+  transform: translateY(-2px);
+}
+
+.fotterInstruction {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 20rem;
+  gap: 1rem;
+}
+
+.instructions {
+  background-color: whitesmoke;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 50%;
+}
+
+.modal_endgame {
+  position: absolute;
+  transform: translateY(50%);
 }
 
 #won {
@@ -129,137 +192,49 @@ body {
   color: whitesmoke;
 }
 
-/*buttom section of you player section*/
-
-.main__ContainerButtom {
-  width: 12rem;
-  display: flex;
-  justify-content: space-evenly;
+.modal_endgame {
+  display: none;
+  justify-content: center;
   align-items: center;
-}
-
-.main__ContainerButtom_plus,
-.main__ContainerButtom_min {
-  width: 25%;
-  height: 2.5rem;
-  color: black;
-  border-radius: 0.2rem;
-  border: none;
-  transition: 0.5s;
-}
-
-.main__ContainerButtom_plus {
-  background-color: rgba(55, 236, 31, 0.76);
-}
-
-.main__ContainerButtom_min {
-  background-color: rgba(236, 72, 31, 0.76);
-}
-
-.inputNumber {
-  height: 5rem;
-  width: 7rem;
-  font-size: 3rem;
+  gap: 2rem;
+  flex-direction: column;
+  background-color: rgba(245, 245, 245, 0.918);
+  width: 100%;
+  height: 100%;
   text-align: center;
-  border: none;
+  position: absolute;
+  top: -50%;
+  z-index: 10;
   border-radius: 0.8rem;
 }
 
-.main__ContainerButtom_plus:hover,
-.main__ContainerButtom_min:hover,
-.makeGuess:hover {
-  background-color: rgba(242, 142, 142, 1);
-}
-
-.makeGuess {
-  color: whitesmoke;
-  height: 3rem;
-  width: 10rem;
-  border-radius: 0.5rem;
-  border: none;
-  transition: 0.5s;
-  background-color: rgb(53, 106, 223);
-}
-
-.nextRound {
-  height: 8rem;
+#starGame {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+}
+#startedGame {
+  display: none;
 }
 
-.nextButtom,
-.nextGameButtom,
-.newGameButtom {
-  height: 4rem;
-  width: 10rem;
-  border-radius: 0.7rem;
-  border: none;
-  transition: 1s;
-  background-color: rgb(53, 106, 223);
-  color: whitesmoke;
-}
-
-.nextButtom:hover,
-.nextGameButtom:hover,
-.newGameButtom:hover {
-  background-color: rgb(30, 150, 230);
-  color: whitesmoke;
-  transform: translateY(-5px);
-}
-
-/*fotter istructions*/
-.fotterInstruction {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  align-items: center;
-  text-align: center;
-}
-
-.instructions {
-  max-width: 300px;
-  height: auto;
-  border-radius: 0.8rem;
-}
-
-footer div {
-  background-color: whitesmoke;
-  border-radius: 4rem;
-  padding: 1.5rem;
-  margin: 1rem;
-}
-
-@media only screen and (max-width: 546px) {
-  body {
-    height: 1150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .container__title {
-    padding: 1rem;
-  }
-
+@media only screen and (max-width: 480px) {
   .container__Round {
-    height: 50%;
+    width: 80%;
   }
 
   .main {
+    flex-wrap: wrap;
     height: 60rem;
   }
 
-  .main__containerComp,
-  .main__containerYou {
-    height: 21rem;
+  .fotterInstruction {
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 40rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 
-  .nextRound {
-    width: 90%;
-  }
   .instructions {
     width: 80%;
+    padding: 1rem;
   }
 }
