@@ -1,4 +1,3 @@
-
 /*window.addEventListener('DOMContentLoaded', (e:Event)=>{
   class DOMelements {
     constructor(domString: string) {
@@ -37,7 +36,7 @@ let userWinner = document.querySelector(".user") as HTMLElement;
 let computerWinner = document.querySelector(".computer") as HTMLElement;
 
 
-const modalEndgame = document.querySelector(".modal_endgame") as HTMLElement
+const modalEndgame = document.querySelector(".modal") as HTMLElement
 const winnerEndGame = document.querySelector(".winnerEndGame") as HTMLElement
 const mainContainerYou = document.querySelector("#main__containerYou") as HTMLElement
 const mainContainerComputer = document.querySelector("#main__containerComp") as HTMLElement
@@ -59,9 +58,9 @@ let getValueCall = getVal()
 const generateNextRound = () => {
     (<HTMLInputElement>makeGuesButton).disabled = false;
     (<HTMLInputElement>addButton).disabled = false;
-        (<HTMLInputElement>minusButton).disabled = false;
-  targetNumber.innerHTML = "?";
-  makeGuesButton.style.backgroundColor = "hover";
+    (<HTMLInputElement>minusButton).disabled = false;
+    targetNumber.innerHTML = "?";
+    makeGuesButton.style.backgroundColor = "hover";
 };
 
 /*Generates a number between 0 and 9 this is the number that the computer selects*/
@@ -120,25 +119,27 @@ const compareGuesses = () => {
   return resultWinner;
 };
 
-const win = () => {
+const winGame = () => {
   if (humanScore >= winningScore) {
     modalEndgame.id = "starGame";
     winnerEndGame.innerHTML =
       "You Won!!! Congrast!!!";
-     
+      return "human won"
+      
   } else if (computerScore >= winningScore) {
     modalEndgame.id = "starGame";
     winnerEndGame.innerHTML =
       "The computer defeat you!!!";
-     
+      return "computer won"
   } 
 };
 
+
+
 const makeGuess = () => {
+  winGame()
   let winner = compareGuesses();
   makeNextButton.disabled = false;
-
-
   if (winner) {
     humanScore++;
     humanScoreDom.innerHTML = humanScore.toString();
@@ -158,6 +159,8 @@ const makeGuess = () => {
     mainContainerComputer.id = "tie";
     mainContainerYou.id = "tie";
   }
+
+  
 };
 
 /*this function updates to 0 the round*/
@@ -190,7 +193,6 @@ const minusOneInputNumber = () => {
 };
 
 const resetGame = () => {
-  
   inputNumber.innerHTML = "0";
   roundNumber.innerHTML = 1+"";
   makeNextButton.disabled = false;
@@ -225,6 +227,7 @@ newGame.addEventListener("click", resetGame);
 document.addEventListener('keydown', (e:KeyboardEvent)=>{
   if(e.code === "Enter"){
     makeGuess()
+
   } else if (e.code === "Backspace" || e.code === "Delete" || e.code === "Minus" ){
     minusOneInputNumber()
   } else if (e.code === "Equal" ){

@@ -29,7 +29,7 @@ var humanScoreDom = document.querySelector(".humanScore");
 var computerScoreDom = document.querySelector(".computerScore");
 var userWinner = document.querySelector(".user");
 var computerWinner = document.querySelector(".computer");
-var modalEndgame = document.querySelector(".modal_endgame");
+var modalEndgame = document.querySelector(".modal");
 var winnerEndGame = document.querySelector(".winnerEndGame");
 var mainContainerYou = document.querySelector("#main__containerYou");
 var mainContainerComputer = document.querySelector("#main__containerComp");
@@ -103,32 +103,25 @@ var compareGuesses = function () {
     }
     return resultWinner;
 };
-var win = function () {
+var winGame = function () {
     if (humanScore >= winningScore) {
-        return true;
-    }
-    else if (computerScore >= winningScore) {
-        return false;
-    }
-    else {
-        return null;
-    }
-};
-var makeGuess = function () {
-    var winner = compareGuesses();
-    var modelnewGame = win();
-    makeNextButton.disabled = false;
-    if (modelnewGame === true) {
         modalEndgame.id = "starGame";
         winnerEndGame.innerHTML =
             "You Won!!! Congrast!!!";
+        return "human won";
     }
-    else if (modelnewGame === false) {
+    else if (computerScore >= winningScore) {
         modalEndgame.id = "starGame";
         winnerEndGame.innerHTML =
             "The computer defeat you!!!";
+        return "computer won";
     }
-    if (winner === true) {
+};
+var makeGuess = function () {
+    winGame();
+    var winner = compareGuesses();
+    makeNextButton.disabled = false;
+    if (winner) {
         humanScore++;
         humanScoreDom.innerHTML = humanScore.toString();
         userWinner.innerHTML = "You won!!!!!!!!";
@@ -136,7 +129,7 @@ var makeGuess = function () {
         mainContainerYou.id = "won";
         mainContainerComputer.id = "lose";
     }
-    else if (winner === false) {
+    else if (!winner) {
         computerScore++;
         computerScoreDom.innerHTML = computerScore.toString();
         computerWinner.innerHTML = "Computer Won!!!!!";
