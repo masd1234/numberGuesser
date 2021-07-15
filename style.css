@@ -7,21 +7,13 @@
 html {
   font-size: 10px;
   font-family: "Roboto", sans-serif;
-  height: auto;
+  height: 100vh;
 }
 
 body {
   position: relative;
-  height: auto;
-  background: rgb(240, 188, 188);
-  background: linear-gradient(
-    38deg,
-    rgba(240, 188, 188, 1) 0%,
-    rgba(242, 142, 142, 1) 30%,
-    rgba(241, 127, 127, 1) 73%,
-    rgba(255, 0, 0, 1) 100%,
-    rgba(0, 212, 255, 1) 100%
-  );
+  height: 100vh;
+  background: rgba(233, 174, 174, 0.884);
 }
 
 .header {
@@ -33,11 +25,11 @@ body {
 }
 
 .container__title {
-  border: whitesmoke 1px solid;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: whitesmoke;
+  background-color: rgb(221, 72, 72);
   color: rgb(27, 27, 27);
+  color: whitesmoke;
 }
 
 .container__Round {
@@ -55,12 +47,13 @@ body {
   background-color: whitesmoke;
   color: rgb(27, 27, 27);
   border-radius: 1rem 1rem 0 0;
+  background-color: rgba(221, 72, 72, 0.548);
+  color: whitesmoke;
 }
 
 .container_target-number {
   text-align: center;
   width: 100%;
-  background-color: whitesmoke;
   padding: 1rem;
   background-color: rgba(214, 28, 28, 0.925);
   color: whitesmoke;
@@ -75,7 +68,6 @@ body {
 }
 
 .containerGame {
-  border: 1px solid whitesmoke;
   min-width: 24rem;
   min-height: 25rem;
   display: flex;
@@ -97,7 +89,13 @@ body {
   font-size: 3rem;
   width: 7rem;
   height: 5rem;
-  border-radius: 1rem;
+  border: 1px solid black;
+  color: black;
+  transition: 0.5s;
+}
+
+.inputNumber:focus {
+  background-color: rgba(0, 110, 255, 0.603);
 }
 
 .main__ContainerButton {
@@ -166,19 +164,16 @@ body {
 }
 
 .instructions {
-  background-color: whitesmoke;
+  background-color: rgb(221, 72, 72);
   text-align: center;
+  color: whitesmoke;
   padding: 1rem;
   border-radius: 0.5rem;
   width: 50%;
 }
 
-.modal_game {
-  transform: translateY(100%);
-}
-
 #won {
-  background-color: rgba(12, 250, 4, 0.623);
+  background-color: rgba(7, 209, 0, 0.87);
   color: whitesmoke;
 }
 
@@ -201,7 +196,6 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: -0%;
   bottom: 0;
   gap: 2rem;
   border-radius: 0.8rem;
@@ -209,9 +203,10 @@ body {
 
 #starGame {
   display: flex;
+  transform: translateY(1%);
 }
 #startedGame {
-  display: none;
+  transform: translateY(-1%);
 }
 
 #endGameTitle {

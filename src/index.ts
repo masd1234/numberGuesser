@@ -16,24 +16,24 @@ let winningScore = 5;
 let roundCounter = 1
 
 //DOM Buttons
-let targetNumber = document.querySelector(".target") as HTMLElement;
-let makeGuesButton = document.querySelector(".makeGuess") as HTMLButtonElement;
-let makeNextButton = document.querySelector(".nextButton") as HTMLButtonElement;
-let addButton = document.querySelector("#buttonPlus") as HTMLButtonElement;
-let minusButton = document.querySelector("#buttonMinus") as HTMLButtonElement;
-let newGame = document.querySelector(".newGameButton") as HTMLButtonElement;
-let next = document.querySelector(".nextGameButton") as HTMLButtonElement;
+const targetNumber = document.querySelector(".target") as HTMLElement;
+const makeGuesButton = document.querySelector(".makeGuess") as HTMLButtonElement;
+const makeNextButton = document.querySelector(".nextButton") as HTMLButtonElement;
+const addButton = document.querySelector("#buttonPlus") as HTMLButtonElement;
+const minusButton = document.querySelector("#buttonMinus") as HTMLButtonElement;
+const newGame = document.querySelector(".newGameButton") as HTMLButtonElement;
+const next = document.querySelector(".nextGameButton") as HTMLButtonElement;
 
 // DOM Input number
-let inputNumber = document.querySelector(".inputNumber") as HTMLInputElement;
+const inputNumber = document.querySelector(".inputNumber") as HTMLInputElement;
 
 // DOM Selectors
-let roundNumber = document.querySelector(".round") as HTMLElement;
-let numberCompt = document.querySelector(".numberComputer") as HTMLElement;
-let humanScoreDom = document.querySelector(".humanScore") as HTMLElement;
-let computerScoreDom = document.querySelector(".computerScore") as HTMLElement;
-let userWinner = document.querySelector(".user") as HTMLElement;
-let computerWinner = document.querySelector(".computer") as HTMLElement;
+const roundNumber = document.querySelector(".round") as HTMLElement;
+const numberCompt = document.querySelector(".numberComputer") as HTMLElement;
+const humanScoreDom = document.querySelector(".humanScore") as HTMLElement;
+const computerScoreDom = document.querySelector(".computerScore") as HTMLElement;
+const userWinner = document.querySelector(".user") as HTMLElement;
+const computerWinner = document.querySelector(".computer") as HTMLElement;
 
 
 const modalEndgame = document.querySelector(".modal") as HTMLElement
@@ -56,9 +56,9 @@ let getValueCall = getVal()
 
 // start a new round in the game
 const generateNextRound = () => {
-    (<HTMLInputElement>makeGuesButton).disabled = false;
-    (<HTMLInputElement>addButton).disabled = false;
-    (<HTMLInputElement>minusButton).disabled = false;
+    (<HTMLButtonElement>makeGuesButton).disabled = false;
+    (<HTMLButtonElement>addButton).disabled = false;
+    (<HTMLButtonElement>minusButton).disabled = false;
     targetNumber.innerHTML = "?";
     makeGuesButton.style.backgroundColor = "hover";
 };
@@ -132,6 +132,7 @@ const winGame = () => {
       "The computer defeat you!!!";
       return "computer won"
   } 
+
 };
 
 
@@ -147,6 +148,7 @@ const makeGuess = () => {
     computerWinner.innerHTML = "Computer lost!!!";
     mainContainerYou.id = "won";
     mainContainerComputer.id = "lose";
+    inputNumber.value = ''
   } else if (!winner) {
     computerScore++;
     computerScoreDom.innerHTML = computerScore.toString();
@@ -154,10 +156,12 @@ const makeGuess = () => {
     userWinner.innerHTML = "You lost!!!";
     mainContainerYou.id = "lose";
     mainContainerComputer.id = "won";
+    inputNumber.value = ''
   } else if (typeof winner === "string") {
     userWinner.innerHTML = "It is a tie";
     mainContainerComputer.id = "tie";
     mainContainerYou.id = "tie";
+    inputNumber.value = ''
   }
 
   
@@ -207,6 +211,7 @@ const resetGame = () => {
   minusButton.disabled = false;
   humanScore = 0;
   computerScore = 0;
+  roundCounter = 0;
   modalEndgame.id = "startedGame";
   mainContainerYou.id = "";
   mainContainerComputer.id = "";
@@ -224,10 +229,9 @@ newGame.addEventListener("click", resetGame);
 
 
 //keyboar Events
-document.addEventListener('keydown', (e:KeyboardEvent)=>{
+document.addEventListener('keypress', (e:KeyboardEvent)=>{
   if(e.code === "Enter"){
     makeGuess()
-
   } else if (e.code === "Backspace" || e.code === "Delete" || e.code === "Minus" ){
     minusOneInputNumber()
   } else if (e.code === "Equal" ){

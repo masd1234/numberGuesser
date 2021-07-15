@@ -128,6 +128,7 @@ var makeGuess = function () {
         computerWinner.innerHTML = "Computer lost!!!";
         mainContainerYou.id = "won";
         mainContainerComputer.id = "lose";
+        inputNumber.value = '';
     }
     else if (!winner) {
         computerScore++;
@@ -136,11 +137,13 @@ var makeGuess = function () {
         userWinner.innerHTML = "You lost!!!";
         mainContainerYou.id = "lose";
         mainContainerComputer.id = "won";
+        inputNumber.value = '';
     }
     else if (typeof winner === "string") {
         userWinner.innerHTML = "It is a tie";
         mainContainerComputer.id = "tie";
         mainContainerYou.id = "tie";
+        inputNumber.value = '';
     }
 };
 /*this function updates to 0 the round*/
@@ -185,6 +188,7 @@ var resetGame = function () {
     minusButton.disabled = false;
     humanScore = 0;
     computerScore = 0;
+    roundCounter = 0;
     modalEndgame.id = "startedGame";
     mainContainerYou.id = "";
     mainContainerComputer.id = "";
@@ -197,7 +201,7 @@ minusButton.addEventListener("click", minusOneInputNumber);
 next.addEventListener("click", resetGame);
 newGame.addEventListener("click", resetGame);
 //keyboar Events
-document.addEventListener('keydown', function (e) {
+document.addEventListener('keypress', function (e) {
     if (e.code === "Enter") {
         makeGuess();
     }
